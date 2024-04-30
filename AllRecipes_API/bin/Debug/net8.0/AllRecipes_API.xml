@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AllRecipes_API</name>
+    </assembly>
+    <members>
+        <member name="M:AllRecipes_API.Controller.AllRecipesController.Scrapping(System.String)">
+            <summary>
+            Demande le scrapping vers une url
+            </summary>
+        </member>
+    </members>
+</doc>

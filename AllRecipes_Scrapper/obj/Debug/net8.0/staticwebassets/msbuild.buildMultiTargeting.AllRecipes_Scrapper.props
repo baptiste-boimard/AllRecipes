@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/AllRecipes_Scrapper.props" />
+</Project>
