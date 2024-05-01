@@ -1,6 +1,0 @@
-@AllRecipes_Scrapper_HostAddress = http://localhost:5254
-
-GET {{AllRecipes_Scrapper_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
