@@ -7,9 +7,11 @@ public class ScrapperService
 {
   public static async Task<List<RecipeNoSQL>> Scrapping(string url)
   {
-    // string mainUrl = "https://www.allrecipes.com/recipes/17561/lunch/";
-    // string mainUrl = "https://www.allrecipes.com/recipes/723/world-cuisine/european/italian/";
-    string[] recipeLinks = await GetRecipeLinks(url);
+        string decodedUrl = HttpUtility.UrlDecode(url);
+
+        // string mainUrl = "https://www.allrecipes.com/recipes/17561/lunch/";
+        // string mainUrl = "https://www.allrecipes.com/recipes/723/world-cuisine/european/italian/";
+        string[] recipeLinks = await GetRecipeLinks(decodedUrl);
     
     List<RecipeNoSQL> recipes = new List<RecipeNoSQL>();
     foreach (var link in recipeLinks)
