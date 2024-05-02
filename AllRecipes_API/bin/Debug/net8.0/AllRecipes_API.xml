@@ -4,10 +4,22 @@
         <name>AllRecipes_API</name>
     </assembly>
     <members>
-        <member name="M:AllRecipes_API.Controller.AllRecipesController.Scrapping(System.String)">
+        <member name="M:AllRecipes_API.Controller.AllRecipesController.Scrapping(System.String,System.Boolean,System.Boolean)">
             <summary>
             Demande le scrapping vers une url
             </summary>
+        </member>
+        <member name="T:AllRecipes_API.Migrations.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
         </member>
     </members>
 </doc>

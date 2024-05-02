@@ -9,11 +9,11 @@ public class RecipeNoSQL
   [BsonRepresentation(BsonType.ObjectId)]
   public string? Id { get; set; }
   [BsonElement("Title")]
-  public string Title { get; set; }
+  public string? Title { get; set; }
   [BsonElement("SubTitle")]
-  public string SubTitle { get; set; }
+  public string? SubTitle { get; set; }
   [BsonElement("Ingredients")]
-  public List<string> Ingredients { get; set; }
+  public List<string>? Ingredients { get; set; }
   [BsonElement("Directions")]
-  public List<String> Directions { get; set; }
+  public List<String>? Directions { get; set; }
 }

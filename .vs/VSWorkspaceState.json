@@ -1,8 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\AllRecipes_API\\Models"
+    "\\AllRecipes_API"
   ],
-  "SelectedNode": "\\AllRecipes.sln",
+  "SelectedNode": "\\AllRecipes_API\\Program.cs",
   "PreviewInSolutionExplorer": false
 }

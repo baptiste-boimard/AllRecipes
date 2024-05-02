@@ -3,8 +3,40 @@
   "WorkspaceRootPath": "C:\\Development\\AllRecipes\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Development\\AllRecipes\\AllRecipes_API\\Models\\InsertRecipesResult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:AllRecipes_API\\Models\\InsertRecipesResult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|c:\\development\\allrecipes\\allrecipes_api\\repositories\\mongorecipesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|solutionrelative:allrecipes_api\\repositories\\mongorecipesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|c:\\development\\allrecipes\\allrecipes_api\\repositories\\postgresreciperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|solutionrelative:allrecipes_api\\repositories\\postgresreciperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|c:\\development\\allrecipes\\allrecipes_api\\services\\scrapperservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|solutionrelative:allrecipes_api\\services\\scrapperservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|c:\\development\\allrecipes\\allrecipes_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|solutionrelative:allrecipes_api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|c:\\development\\allrecipes\\allrecipes_api\\data\\postgresdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|solutionrelative:allrecipes_api\\data\\postgresdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|c:\\development\\allrecipes\\allrecipes_api\\data\\mongodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|solutionrelative:allrecipes_api\\data\\mongodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|c:\\development\\allrecipes\\allrecipes_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|solutionrelative:allrecipes_api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|c:\\development\\allrecipes\\allrecipes_api\\models\\recipesql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|solutionrelative:allrecipes_api\\models\\recipesql.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|c:\\development\\allrecipes\\allrecipes_api\\controllers\\allrecipescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0FABFF18-E443-44BF-A05D-F9B84A509DEC}|AllRecipes_API\\AllRecipes_API.csproj|solutionrelative:allrecipes_api\\controllers\\allrecipescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +46,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 173,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -25,20 +57,126 @@
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MongoDBContext.cs",
+              "DocumentMoniker": "C:\\Development\\AllRecipes\\AllRecipes_API\\Data\\MongoDBContext.cs",
+              "RelativeDocumentMoniker": "AllRecipes_API\\Data\\MongoDBContext.cs",
+              "ToolTip": "C:\\Development\\AllRecipes\\AllRecipes_API\\Data\\MongoDBContext.cs",
+              "RelativeToolTip": "AllRecipes_API\\Data\\MongoDBContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T12:01:57.933Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Development\\AllRecipes\\AllRecipes_API\\Program.cs",
+              "RelativeDocumentMoniker": "AllRecipes_API\\Program.cs",
+              "ToolTip": "C:\\Development\\AllRecipes\\AllRecipes_API\\Program.cs",
+              "RelativeToolTip": "AllRecipes_API\\Program.cs",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAtwCsAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T10:15:09.477Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ScrapperService.cs",
+              "DocumentMoniker": "C:\\Development\\AllRecipes\\AllRecipes_API\\Services\\ScrapperService.cs",
+              "RelativeDocumentMoniker": "AllRecipes_API\\Services\\ScrapperService.cs",
+              "ToolTip": "C:\\Development\\AllRecipes\\AllRecipes_API\\Services\\ScrapperService.cs",
+              "RelativeToolTip": "AllRecipes_API\\Services\\ScrapperService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACYAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:58:05.927Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "InsertRecipesResult.cs",
-              "DocumentMoniker": "C:\\Development\\AllRecipes\\AllRecipes_API\\Models\\InsertRecipesResult.cs",
-              "RelativeDocumentMoniker": "AllRecipes_API\\Models\\InsertRecipesResult.cs",
-              "ToolTip": "C:\\Development\\AllRecipes\\AllRecipes_API\\Models\\InsertRecipesResult.cs",
-              "RelativeToolTip": "AllRecipes_API\\Models\\InsertRecipesResult.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
+              "Title": "MongoRecipesRepository.cs",
+              "DocumentMoniker": "C:\\Development\\AllRecipes\\AllRecipes_API\\Repositories\\MongoRecipesRepository.cs",
+              "RelativeDocumentMoniker": "AllRecipes_API\\Repositories\\MongoRecipesRepository.cs",
+              "ToolTip": "C:\\Development\\AllRecipes\\AllRecipes_API\\Repositories\\MongoRecipesRepository.cs",
+              "RelativeToolTip": "AllRecipes_API\\Repositories\\MongoRecipesRepository.cs",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAwCEAAAAbAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-01T17:17:32.641Z",
+              "WhenOpened": "2024-05-02T09:57:42.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AllRecipesController.cs",
+              "DocumentMoniker": "C:\\Development\\AllRecipes\\AllRecipes_API\\Controllers\\AllRecipesController.cs",
+              "RelativeDocumentMoniker": "AllRecipes_API\\Controllers\\AllRecipesController.cs",
+              "ToolTip": "C:\\Development\\AllRecipes\\AllRecipes_API\\Controllers\\AllRecipesController.cs",
+              "RelativeToolTip": "AllRecipes_API\\Controllers\\AllRecipesController.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAmwDEAAAA0AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T08:39:29.386Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "RecipeSQL.cs",
+              "DocumentMoniker": "C:\\Development\\AllRecipes\\AllRecipes_API\\Models\\RecipeSQL.cs",
+              "RelativeDocumentMoniker": "AllRecipes_API\\Models\\RecipeSQL.cs",
+              "ToolTip": "C:\\Development\\AllRecipes\\AllRecipes_API\\Models\\RecipeSQL.cs",
+              "RelativeToolTip": "AllRecipes_API\\Models\\RecipeSQL.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T09:29:04.57Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 173,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Development\\AllRecipes\\AllRecipes_API\\appsettings.json",
+              "RelativeDocumentMoniker": "AllRecipes_API\\appsettings.json",
+              "ToolTip": "C:\\Development\\AllRecipes\\AllRecipes_API\\appsettings.json",
+              "RelativeToolTip": "AllRecipes_API\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-05-02T11:59:32.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PostgresDBContext.cs",
+              "DocumentMoniker": "C:\\Development\\AllRecipes\\AllRecipes_API\\Data\\PostgresDBContext.cs",
+              "RelativeDocumentMoniker": "AllRecipes_API\\Data\\PostgresDBContext.cs",
+              "ToolTip": "C:\\Development\\AllRecipes\\AllRecipes_API\\Data\\PostgresDBContext.cs",
+              "RelativeToolTip": "AllRecipes_API\\Data\\PostgresDBContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T12:01:34.652Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PostgresRecipeRepository.cs",
+              "DocumentMoniker": "C:\\Development\\AllRecipes\\AllRecipes_API\\Repositories\\PostgresRecipeRepository.cs",
+              "RelativeDocumentMoniker": "AllRecipes_API\\Repositories\\PostgresRecipeRepository.cs",
+              "ToolTip": "C:\\Development\\AllRecipes\\AllRecipes_API\\Repositories\\PostgresRecipeRepository.cs",
+              "RelativeToolTip": "AllRecipes_API\\Repositories\\PostgresRecipeRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-02T11:45:34.501Z",
               "EditorCaption": ""
             }
           ]

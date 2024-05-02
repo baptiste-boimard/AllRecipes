@@ -1,3 +1,4 @@
+using System.Linq.Expressions;
 using System.Text.Json;
 using AllRecipes_API.Models;
 using MongoDB.Driver;
@@ -53,6 +54,21 @@ public class MongoRecipesRepository
       throw;
     }
   }
-  
+
+  public async Task<InsertRecipesResult> InsertRecipesToPostgresDb(string jsonFile) => null;
+
+  //public async Task<InsertRecipesResult> InsertRecipesToPostgres(string jsonFile)
+  //  {
+  //      try
+  //      {
+  //          object value = await Console.WriteLine('coucou');
+  //      }
+  //      catch (Exception e)
+  //      {
+  //          Console.WriteLine(e);
+  //          throw;
+  //      }
+  //  }
   
 }
+

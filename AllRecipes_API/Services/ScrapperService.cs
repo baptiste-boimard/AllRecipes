@@ -1,5 +1,8 @@
 using AllRecipes_API.Models;
 using HtmlAgilityPack;
+using System.Linq;
+using System.Web;
+
 
 namespace AllRecipes_API.Services;
 
@@ -24,8 +27,26 @@ public class ScrapperService
     }
     return recipes;
   }
-  
-  public static async Task<string[]> GetRecipeLinks(string url)
+    public static async Task<List<RecipeSql>> ScrappingSQL(string url)
+    {
+        string decodedUrl = HttpUtility.UrlDecode(url);
+
+        string[] recipeLinks = await GetRecipeLinks(decodedUrl);
+
+        List<RecipeSql> recipes = new List<RecipeSql>();
+        foreach (var link in recipeLinks)
+        {
+            // if en fonction du type de la database
+            RecipeSql recipe = await GetRecipeDetailsForSQL(link);
+
+            recipes.Add(recipe!);
+
+        }
+        return recipes;
+
+    }
+
+    public static async Task<string[]> GetRecipeLinks(string url)
   {
     HttpClient httpClient = new HttpClient();
     List<string> recipeLinks = new List<string>();
@@ -42,10 +63,10 @@ public class ScrapperService
     foreach (var link in links)
     {
       string href = link.GetAttributeValue("href", string.Empty);
-      if (href.Contains("https://www.allrecipes.com/recipe/")) // Assurez-vous que le lien contient le mot "recette"
-      {
+      //if (href.Contains("https://www.allrecipes.com/recipe/")) // Assurez-vous que le lien contient le mot "recette"
+      //{
         recipeLinks.Add(href);
-      }
+      //}
     }
     
     return recipeLinks.Distinct().ToArray(); // Éliminer les doublons
@@ -91,6 +112,66 @@ public class ScrapperService
 
       return recipe;
     }
-    return null;
+        return null;
   }
+
+    public static async Task<RecipeSql> GetRecipeDetailsForSQL(string url)
+    {
+        HttpClient client = new HttpClient();
+        string html = await client.GetStringAsync(url);
+        HtmlDocument htmlDocument = new HtmlDocument();
+        htmlDocument.LoadHtml(html);
+
+        RecipeSql recipe = new RecipeSql();
+
+        // Exemple de récupération de titre et d'ingrédients, ajustez selon la structure exacte du site
+        var titleNode = htmlDocument.DocumentNode.SelectSingleNode("//h1[@class='article-heading type--lion']");
+        var subheadingNode = htmlDocument.DocumentNode.SelectSingleNode("//p[@class='article-subheading type--dog']");
+        var ingredientsNodes = htmlDocument.DocumentNode.SelectNodes("//ul[@class='mntl-structured-ingredients__list']/li");
+        var directionNodes = htmlDocument.DocumentNode.SelectNodes("//ol[@class='comp mntl-sc-block mntl-sc-block-startgroup mntl-sc-block-group--OL']/li");
+
+        if (titleNode != null)
+        {
+
+            //string stringBuilderIngredients = "";
+            //for (int i = 0; i < ingredientsNodes.Count; i++)
+            //{
+            //    stringBuilderIngredients.Append(ingredientsNodes[i].InnerText);
+            //};
+
+            //string stringBuilderDirections = "";
+            //for (int i = 0; i < directionNodes.Count; i++)
+            //{
+            //    stringBuilderDirections.Append(ingredientsNodes[i].InnerText);
+            //};
+
+            recipe.Title = titleNode.InnerText.Trim();
+            recipe.SubTitle = subheadingNode.InnerText.Trim();
+            recipe.Ingredients = new string("");
+            recipe.Directions = new string("");
+
+            if (ingredientsNodes != null)
+            {
+                for (int i = 0; i < ingredientsNodes.Count; i++)
+                {
+                    //recipe.Ingredients.Append(ingredientsNodes[i].InnerText);
+                    recipe.Ingredients += (ingredientsNodes[i].InnerText);
+                };
+            }
+
+            if (directionNodes != null)
+            {
+                for (int i = 0; i < directionNodes.Count; i++)
+                {
+                    //recipe.Directions.Append(ingredientsNodes[i].InnerText);
+                    recipe.Directions += (directionNodes[i].InnerText);
+                };
+            }
+
+            return recipe;
+        }
+        return null;
+
+
+    }
 }

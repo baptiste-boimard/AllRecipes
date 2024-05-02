@@ -1,5 +1,7 @@
 using System.Reflection;
+using AllRecipes_API.Data;
 using AllRecipes_API.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
@@ -7,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddSingleton<MongoRecipesRepository>();
+builder.Services.AddScoped<PostgresRecipeRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
   {
@@ -30,6 +33,13 @@ builder.Services.AddSingleton(serviceProvider =>
 {
   var client = serviceProvider.GetRequiredService<IMongoClient>();
   return client.GetDatabase(databaseName);
+});
+
+
+// Configuration de Postgres
+builder.Services.AddDbContext<PostgresDbContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 var app = builder.Build();
