@@ -142,17 +142,16 @@ public class ScrapperService
               {
 
               // recipe.Ingredients = new List<Ingredient>(ingredientsNodes.Count);
-
               foreach (var ingredientsNode in ingredientsNodes)
-              // for (int i = 0; i < ingredientsNodes.Count; i++)
               {
+                if (ingredientsNode == null) continue;
                 HtmlNode? quantity = ingredientsNode.SelectSingleNode(".//span[@data-ingredient-quantity='true']");
                 HtmlNode? unity = ingredientsNode.SelectSingleNode(".//span[@data-ingredient-unit='true']");
                 HtmlNode? name = ingredientsNode.SelectSingleNode(".//span[@data-ingredient-name='true']");
                 
                 recipe.Ingredients.Add(new Ingredient
                 {
-                  Quantity = new Quantity(description: name != null ? quantity.InnerText.Trim() : ""),
+                  Quantity = new Quantity(description: quantity != null ? quantity.InnerText.Trim() : ""),
                   Unity = new Unity(description: unity != null ? unity.InnerText.Trim() : ""),
                   Name  = new Name(description: name != null ? name.InnerText.Trim() : ""),
                 });
