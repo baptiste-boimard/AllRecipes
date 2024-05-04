@@ -4,7 +4,7 @@
         <name>AllRecipes_API</name>
     </assembly>
     <members>
-        <member name="M:AllRecipes_API.Controller.AllRecipesController.Scrapping(System.String,System.Boolean,System.Boolean)">
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.Scrapping(System.String,System.Boolean,System.Boolean)">
             <summary>
             Demande le scrapping vers une url
             </summary>
@@ -19,6 +19,30 @@
             <inheritdoc />
         </member>
         <member name="M:AllRecipes_API.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:AllRecipes_API.Migrations.AddTables">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.AddTables.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.AddTables.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.AddTables.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:AllRecipes_API.Migrations.AddManyRelations">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.AddManyRelations.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.AddManyRelations.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.AddManyRelations.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

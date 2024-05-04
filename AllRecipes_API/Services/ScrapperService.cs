@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using AllRecipes_API.Models;
 using HtmlAgilityPack;
 using System.Linq;
@@ -34,12 +35,13 @@ public class ScrapperService
         string[] recipeLinks = await GetRecipeLinks(decodedUrl);
 
         List<RecipeSql> recipes = new List<RecipeSql>();
+        
         foreach (var link in recipeLinks)
         {
             // if en fonction du type de la database
             RecipeSql recipe = await GetRecipeDetailsForSQL(link);
 
-            recipes.Add(recipe!);
+            recipes.Add(recipe);
 
         }
         return recipes;
@@ -132,39 +134,41 @@ public class ScrapperService
 
         if (titleNode != null)
         {
-
-            //string stringBuilderIngredients = "";
-            //for (int i = 0; i < ingredientsNodes.Count; i++)
-            //{
-            //    stringBuilderIngredients.Append(ingredientsNodes[i].InnerText);
-            //};
-
-            //string stringBuilderDirections = "";
-            //for (int i = 0; i < directionNodes.Count; i++)
-            //{
-            //    stringBuilderDirections.Append(ingredientsNodes[i].InnerText);
-            //};
-
             recipe.Title = titleNode.InnerText.Trim();
             recipe.SubTitle = subheadingNode.InnerText.Trim();
-            recipe.Ingredients = new string("");
+            recipe.Ingredients = new List<Ingredient>();
             recipe.Directions = new string("");
 
-            if (ingredientsNodes != null)
+              if (ingredientsNodes != null)
             {
-                for (int i = 0; i < ingredientsNodes.Count; i++)
+              recipe.Ingredients = new List<Ingredient>(ingredientsNodes.Count);
+
+              for (int i = 0; i < ingredientsNodes.Count; i++)
+              {
+                Ingredient ingredient = new Ingredient
                 {
-                    //recipe.Ingredients.Append(ingredientsNodes[i].InnerText);
-                    recipe.Ingredients += (ingredientsNodes[i].InnerText);
+                  Recipe = new RecipeSql(),
+                  Quantity = new Quantity(),
+                  Unity = new Unity(),
+                  Name = new Name(),
                 };
+                
+              recipe.Ingredients.Add(ingredient);
+              
+              // recipe.Ingredients[i].Quantity.Description = htmlDocument.DocumentNode.SelectSingleNode(".//span[@data-ingredient-quantity='true']").InnerText.Trim();
+              recipe.Ingredients[i].Quantity.Description = ingredientsNodes[i].SelectSingleNode(".//span[@data-ingredient-quantity='true']").InnerText.Trim();
+              recipe.Ingredients[i].Unity.Description = ingredientsNodes[i].SelectSingleNode(".//span[@data-ingredient-unit='true']").InnerText.Trim();
+              recipe.Ingredients[i].Name.Description = ingredientsNodes[i].SelectSingleNode(".//span[@data-ingredient-name='true']").InnerText.Trim();
+              }
+              
+              
             }
 
             if (directionNodes != null)
             {
                 for (int i = 0; i < directionNodes.Count; i++)
                 {
-                    //recipe.Directions.Append(ingredientsNodes[i].InnerText);
-                    recipe.Directions += (directionNodes[i].InnerText);
+                    recipe.Directions += (directionNodes[i].InnerText.Trim());
                 };
             }
 

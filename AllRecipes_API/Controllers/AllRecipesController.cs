@@ -4,10 +4,8 @@ using AllRecipes_API.Models;
 using AllRecipes_API.Repositories;
 using AllRecipes_API.Services;
 using Microsoft.AspNetCore.Mvc;
-using MongoDB.Driver.Core.Operations;
-using static System.Xml.Formatting;
 
-namespace AllRecipes_API.Controller;
+namespace AllRecipes_API.Controllers;
 
 public class AllRecipesController : Microsoft.AspNetCore.Mvc.Controller
 {
@@ -41,14 +39,14 @@ public class AllRecipesController : Microsoft.AspNetCore.Mvc.Controller
       {
         var scrappingResultSql = await ScrapperService.ScrappingSQL(url);
         var scrappingJsonSql = JsonSerializer.Serialize(scrappingResultSql);
-        responseSql = _mongoRecipesRepository.InsertRecipesToPostgresDb(scrappingJsonSql);
+        responseSql = _postgresRecipeRepository.InsertRecipesToPostgresDb(scrappingJsonSql);
       }
 
       if (nosql)
       {
-        var scrappingResult = await ScrapperService.Scrapping(url);
-        var scrappingJson = JsonSerializer.Serialize(scrappingResult);
-        responseNoSql = _mongoRecipesRepository.InsertRecipesToMongoDb(scrappingJson);
+        var scrappingResultNoSql = await ScrapperService.Scrapping(url);
+        var scrappingJsonNoSql = JsonSerializer.Serialize(scrappingResultNoSql);
+        responseNoSql = _mongoRecipesRepository.InsertRecipesToMongoDb(scrappingJsonNoSql);
       }
       
       // Création de la réponse vers swagger
@@ -59,21 +57,21 @@ public class AllRecipesController : Microsoft.AspNetCore.Mvc.Controller
 
       JsonObject jsonObjectResult = new JsonObject();
 
-      if (responseSql != null)
+      if (responseSql.Result.RejectedRecipes != null || responseSql.Result.AcceptedRecipes != null)
       {
-        jsonObjectResult.Add("acceptedSql", $"{acceptedSql}");
-        jsonObjectResult.Add("acceptedSql", $"{responseSql.Result.AcceptedRecipes}");
-        jsonObjectResult.Add("rejectedSql", $"{rejectedSql}");
-        jsonObjectResult.Add("rejectedSql", $"{responseSql.Result.RejectedRecipes}");
+        jsonObjectResult.Add("acceptSql", $"{acceptedSql}");
+        jsonObjectResult.Add("acceptedSql",$"{JsonSerializer.Serialize(responseSql.Result.AcceptedRecipes)}");
+        jsonObjectResult.Add("rejectSql", $"{rejectedSql}");
+        jsonObjectResult.Add("rejectedSql",$"{JsonSerializer.Serialize(responseSql.Result.RejectedRecipes)}");
       }
       
 
-      if (responseNoSql != null)
+      if (responseNoSql.Result.RejectedRecipes != null || responseNoSql.Result.AcceptedRecipes != null)
       {
-        jsonObjectResult.Add("acceptedNoSql", $"{acceptedNoSql}");
-        jsonObjectResult.Add("acceptedNoSql", $"{responseNoSql.Result.AcceptedRecipes}");
-        jsonObjectResult.Add("rejectedNoSql", $"{rejectedNoSql}");
-        jsonObjectResult.Add("rejectedNoSql", $"{responseNoSql.Result.RejectedRecipes}");
+        jsonObjectResult.Add("acceptNoSql", $"{acceptedNoSql}");
+        jsonObjectResult.Add("acceptedNoSql", $"{JsonSerializer.Serialize(responseNoSql.Result.AcceptedRecipes)}");
+        jsonObjectResult.Add("rejectNoSql", $"{rejectedNoSql}");
+        jsonObjectResult.Add("rejectedNoSql", $"{JsonSerializer.Serialize(responseNoSql.Result.RejectedRecipes)}");
       }
       
       return Ok(jsonObjectResult);

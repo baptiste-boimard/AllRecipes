@@ -54,21 +54,5 @@ public class MongoRecipesRepository
       throw;
     }
   }
-
-  public async Task<InsertRecipesResult> InsertRecipesToPostgresDb(string jsonFile) => null;
-
-  //public async Task<InsertRecipesResult> InsertRecipesToPostgres(string jsonFile)
-  //  {
-  //      try
-  //      {
-  //          object value = await Console.WriteLine('coucou');
-  //      }
-  //      catch (Exception e)
-  //      {
-  //          Console.WriteLine(e);
-  //          throw;
-  //      }
-  //  }
-  
 }
 

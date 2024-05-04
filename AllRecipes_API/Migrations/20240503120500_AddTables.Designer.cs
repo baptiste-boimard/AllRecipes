@@ -3,6 +3,7 @@ using System;
 using AllRecipes_API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AllRecipes_API.Migrations
 {
     [DbContext(typeof(PostgresDbContext))]
-    partial class PostgresDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240503120500_AddTables")]
+    partial class AddTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -43,14 +46,6 @@ namespace AllRecipes_API.Migrations
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("NameId");
-
-                    b.HasIndex("QuantityId");
-
-                    b.HasIndex("RecipeId");
-
-                    b.HasIndex("UnityId");
 
                     b.ToTable("Ingredients");
                 });
@@ -98,6 +93,9 @@ namespace AllRecipes_API.Migrations
                     b.Property<string>("Directions")
                         .HasColumnType("text");
 
+                    b.Property<string>("Ingredients")
+                        .HasColumnType("text");
+
                     b.Property<string>("SubTitle")
                         .HasColumnType("text");
 
@@ -123,61 +121,6 @@ namespace AllRecipes_API.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Unities");
-                });
-
-            modelBuilder.Entity("AllRecipes_API.Models.Ingredient", b =>
-                {
-                    b.HasOne("AllRecipes_API.Models.Name", "Name")
-                        .WithMany("Ingredients")
-                        .HasForeignKey("NameId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AllRecipes_API.Models.Quantity", "Quantity")
-                        .WithMany("Ingredients")
-                        .HasForeignKey("QuantityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AllRecipes_API.Models.RecipeSql", "Recipe")
-                        .WithMany("Ingredients")
-                        .HasForeignKey("RecipeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("AllRecipes_API.Models.Unity", "Unity")
-                        .WithMany("Ingredients")
-                        .HasForeignKey("UnityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Name");
-
-                    b.Navigation("Quantity");
-
-                    b.Navigation("Recipe");
-
-                    b.Navigation("Unity");
-                });
-
-            modelBuilder.Entity("AllRecipes_API.Models.Name", b =>
-                {
-                    b.Navigation("Ingredients");
-                });
-
-            modelBuilder.Entity("AllRecipes_API.Models.Quantity", b =>
-                {
-                    b.Navigation("Ingredients");
-                });
-
-            modelBuilder.Entity("AllRecipes_API.Models.RecipeSql", b =>
-                {
-                    b.Navigation("Ingredients");
-                });
-
-            modelBuilder.Entity("AllRecipes_API.Models.Unity", b =>
-                {
-                    b.Navigation("Ingredients");
                 });
 #pragma warning restore 612, 618
         }
