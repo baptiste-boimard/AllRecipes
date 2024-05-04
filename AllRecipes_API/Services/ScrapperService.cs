@@ -2,6 +2,7 @@ using System.ComponentModel;
 using AllRecipes_API.Models;
 using HtmlAgilityPack;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 
 
@@ -31,18 +32,18 @@ public class ScrapperService
     {
         string decodedUrl = HttpUtility.UrlDecode(url);
 
-        // string[] recipeLinks = await GetRecipeLinks(decodedUrl);
+        string[] recipeLinks = await GetRecipeLinks(decodedUrl);
 
         List<RecipeSql> recipes = new List<RecipeSql>();
         
-        // foreach (var link in recipeLinks)
-        // {
-            RecipeSql recipe = await GetRecipeDetailsForSQL(decodedUrl);
+        foreach (var link in recipeLinks)
+        {
+            RecipeSql recipe = await GetRecipeDetailsForSQL(link);
             // RecipeSql recipe = await GetRecipeDetailsForSQL(link);
 
             recipes.Add(recipe);
 
-        // }
+        }
         return recipes;
     }
 
@@ -63,10 +64,13 @@ public class ScrapperService
     foreach (var link in links)
     {
       string href = link.GetAttributeValue("href", string.Empty);
-      //if (href.Contains("https://www.allrecipes.com/recipe/")) // Assurez-vous que le lien contient le mot "recette"
-      //{
+      
+      // On s'assure que le link contient bien une recette
+      Regex recipeRegex = new Regex(@"^https:\/\/www\.allrecipes\.com\/.*?recipe");
+      if (recipeRegex.IsMatch(href))
+      {
         recipeLinks.Add(href);
-      //}
+      }
     }
     
     return recipeLinks.Distinct().ToArray(); // Éliminer les doublons

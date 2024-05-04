@@ -45,5 +45,17 @@
         <member name="M:AllRecipes_API.Migrations.AddManyRelations.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:AllRecipes_API.Migrations.ajoutunitydescriptionunique">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.ajoutunitydescriptionunique.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.ajoutunitydescriptionunique.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.ajoutunitydescriptionunique.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

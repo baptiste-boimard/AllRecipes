@@ -29,13 +29,19 @@ namespace AllRecipes_API.Data
                 .HasMany(q => q.Ingredients)
                 .WithOne(i => i.Quantity)
                 .HasForeignKey(i => i.QuantityId);
+            
+            // Configuration pour le champ Description soit unique
+            modelBuilder.Entity<Unity>()
+                .HasIndex(u => u.Description)
+                .IsUnique();
 
             // Configuration de la relation Ingredient et Unity
             modelBuilder.Entity<Unity>()
                 .HasMany(u => u.Ingredients)
                 .WithOne(i => i.Unity)
                 .HasForeignKey(i => i.UnityId);
-
+            
+            
             // Configuration de la relation Ingredient et Name
             modelBuilder.Entity<Name>()
                 .HasMany(n => n.Ingredients)
