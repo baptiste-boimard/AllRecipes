@@ -10,7 +10,7 @@ namespace AllRecipes_API.Data
         {
         }
         
-        public DbSet<RecipeSql?> RecipesSql { get; set; }
+        public DbSet<RecipeSql> RecipesSql { get; set; }
         public DbSet<Quantity> Quantities { get; set; }
         public DbSet<Unity> Unities { get; set; }
         public DbSet<Name> Names { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
 using AllRecipes_API.Data;
 using AllRecipes_API.Models;
-using MongoDB.Driver;
+using Microsoft.EntityFrameworkCore;
 
 namespace AllRecipes_API.Repositories
 {
@@ -24,21 +24,83 @@ namespace AllRecipes_API.Repositories
             try
             {
                 List<RecipeSql>? recipes = JsonSerializer.Deserialize<List<RecipeSql>>(jsonFile);
-                List<string> recipesRejected = new List<string>();
-                List<string> recipesAccepted = new List<string>();
+                List<string?> recipesRejected = new List<string?>();
+                List<string?> recipesAccepted = new List<string?>();
 
                 foreach (RecipeSql recipe in recipes!)
                 {
-                    var result = await GetRecipeByName(recipe.Title);
-
-                    if (result == null)
+                    // Enrengistrement de la recipe en BDD ou non
+                    var existingRecipe = await GetRecipeByName(recipe.Title);
+                    if (existingRecipe != null)
                     {
-                        Add(recipe);
-                        recipesAccepted.Add(recipe.Title);
+                        recipe.Id = existingRecipe.Id;
+                        recipesRejected.Add(recipe.Title);
                     }
                     else
                     {
-                        recipesRejected.Add(recipe.Title);
+                        var newRecipe = AddRecipe(recipe);
+                        recipe.Id = newRecipe.Id;
+                        recipesAccepted.Add(newRecipe.Title);
+                    
+
+                        foreach (var ingredient in recipe.Ingredients!)
+                        {
+                            // Enrengistrement de la Quantity en BDD
+                            var existingQuantity =
+                                _postgresDbContext.Quantities.AsNoTracking().FirstOrDefault(q =>
+                                    q.Description == ingredient.Quantity!.Description);
+
+                            if (existingQuantity != null)
+                            {
+                                ingredient.Quantity!.Id = existingQuantity.Id;
+                            }
+                            else
+                            {
+                                var newQuantity = AddQuantity(ingredient.Quantity);
+                                ingredient.Quantity!.Id = newQuantity.Id;
+                            }
+
+                            var existingUnity =
+                                _postgresDbContext.Unities.AsNoTracking().FirstOrDefault(u =>
+                                    u.Description == ingredient.Unity!.Description);
+
+                            if (existingUnity != null)
+                            {
+                                ingredient.Unity!.Id = existingUnity.Id;
+                            }
+                            else
+                            {
+                                var newUnity = AddUnity(ingredient.Unity);
+                                ingredient.Unity!.Id = newUnity.Id;
+                            }
+
+                            var existingName =
+                                _postgresDbContext.Names.AsNoTracking().FirstOrDefault(n =>
+                                    n.Description == ingredient.Name!.Description);
+
+                            if (existingName != null)
+                            {
+                                ingredient.Name!.Id = existingName.Id;
+                            }
+                            else
+                            {
+                                var newName = AddName(ingredient.Name);
+                                ingredient.Name!.Id = newName.Id;
+
+                            }
+
+                            var existingIngredient = _postgresDbContext.Ingredients
+                                .FirstOrDefault(i =>
+                                    i.QuantityId == ingredient.Quantity!.Id &&
+                                    i.UnityId == ingredient.Unity!.Id &&
+                                    i.NameId == ingredient.Name!.Id &&
+                                    i.RecipeId == recipe.Id
+                                );
+                            if (existingIngredient == null)
+                            {
+                                AddIngredient(ingredient, recipe);
+                            }
+                        }
                     }
                 }
 
@@ -54,16 +116,67 @@ namespace AllRecipes_API.Repositories
                 throw;
             }
         }
-        public bool Add(RecipeSql recipe)
+
+        private Quantity AddQuantity(Quantity? quantity)
         {
-            _postgresDbContext.Add(recipe);
-            return Save();
+            var newQuantity = new Quantity
+            {
+                Id = quantity!.Id,
+                Description = quantity.Description,
+            };
+            _postgresDbContext.Quantities.Add(newQuantity);
+            _postgresDbContext.SaveChanges();
+            return newQuantity;
         }
-        
-        public bool Save()
+
+        private Unity AddUnity(Unity? unity)
         {
-            var saved = _postgresDbContext.SaveChanges();
-            return saved > 0 ? true : false;
+            var newUnity = new Unity
+            {
+                Id = unity!.Id,
+                Description = unity.Description,
+            };
+            _postgresDbContext.Unities.Add(newUnity);
+            _postgresDbContext.SaveChanges();
+            return newUnity;
+        }
+
+        private Name AddName(Name? name)
+        {
+            var newName = new Name
+            {
+                Id = name!.Id,
+                Description = name.Description,
+            };
+            _postgresDbContext.Names.Add(newName);
+            _postgresDbContext.SaveChanges();
+            return newName;
+        }
+
+        private void AddIngredient(Ingredient ingredient, RecipeSql recipe)
+        {
+            var newIngredient = new Ingredient
+            {
+                RecipeId = recipe.Id,
+                QuantityId = ingredient.Quantity!.Id,
+                UnityId = ingredient.Unity!.Id,
+                NameId = ingredient.Name!.Id,
+            };
+            _postgresDbContext.Ingredients.Add(newIngredient);
+            _postgresDbContext.SaveChanges();
+        }
+
+        private RecipeSql AddRecipe(RecipeSql recipe)
+        {
+            var newRecipe = new RecipeSql
+            {
+                Title = recipe.Title,
+                SubTitle = recipe.SubTitle,
+                Directions = recipe.Directions,
+            };
+            _postgresDbContext.RecipesSql.Add(newRecipe);
+            _postgresDbContext.SaveChanges();
+            return newRecipe;
         }
     }
 }
