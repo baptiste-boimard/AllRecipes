@@ -213,5 +213,52 @@ namespace AllRecipes_API.Repositories
             
             return recipeDtos;
         }
+
+        public RecipeSQLDto GetOneById(int id)
+        {
+            var recipe = _postgresDbContext.RecipesSql
+                .Include(r => r.Ingredients)!
+                .ThenInclude(i => i.Quantity)
+                .Include(r => r.Ingredients)!
+                .ThenInclude(i => i.Unity)
+                .Include(r => r.Ingredients)!
+                .ThenInclude(i => i.Name)
+                .FirstOrDefault(r => r.Id == id);
+
+            var recipeDto = new RecipeSQLDto
+            {
+                Id = recipe.Id,
+                Title = recipe.Title,
+                SubTitle = recipe.SubTitle,
+                Directions = recipe.Directions,
+                Ingredients = recipe.Ingredients.Select(i => new IngredientDto
+                {
+                    Quantity = i.Quantity.Description,
+                    Unity = i.Unity.Description,
+                    Name = i.Name.Description,
+                })
+            };
+            return recipeDto;
+        }
+        
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchRecipes(string searchTerm)
+        {
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                return BadRequest("Search term is required.");
+            }
+
+            var recipes = await _postgresDbContext.RecipesSql
+                .Include(r => r.Ingredients)
+                .Where(r => r.Ingredients.Any(i => EF.Functions.Like(i.Name, $"%{searchTerm}%")))
+                .ToListAsync();
+
+            if (!recipes.Any())
+            {
+                return NotFound("No recipes found containing the search term in their ingredients.");
+            }
+
+            return Ok(recipes);
     }
 }

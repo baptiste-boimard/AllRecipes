@@ -6,5 +6,5 @@ public class RecipeSQLDto
   public string? Title { get; set; }
   public string? SubTitle { get; set; }
   public string? Directions { get; set; }
-  public List<IngredientDto>? Ingredients { get; set; }
+  public IEnumerable<IngredientDto> Ingredients { get; set; }
 }

@@ -86,19 +86,17 @@ public class AllRecipesController : Controller
   }
 
   /// <summary>
-  /// Demande le scrapping vers une url
+  /// Demande toutes les recette de la BDD SQL
   /// </summary>
   [HttpGet]
   [Route($"/GetAllSql/")]
   [Produces("application/json")]
-  // [ProducesResponseType(200, Type = typeof(StatusResponseOk))]
-  // [ProducesResponseType(404, Type = typeof(StatusNotFoundError))]
-  public async Task<IActionResult> GetAllSql()
+  public async Task<IActionResult> GetAllRecipesSql()
   {
     try
     {
       var response = _postgresRecipeRepository.GetAll();
-      
+
       return Ok(response);
     }
     catch (Exception e)
@@ -106,6 +104,27 @@ public class AllRecipesController : Controller
       Console.WriteLine(e);
       throw;
     }
+  }
+
+    /// <summary>
+    /// Demande une recette de la base de données SQL
+    /// </summary>
+    [HttpGet]
+    [Route($"/GetOneRecipeSql/{{id}}")]
+    [Produces("application/json")]
+    public async Task<IActionResult> GetOneRecipeSql(int id)
+    {
+      try
+      {
+        var response = _postgresRecipeRepository.GetOneById(id);
+      
+        return Ok(response);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e);
+        throw;
+      }
     
   }
 }

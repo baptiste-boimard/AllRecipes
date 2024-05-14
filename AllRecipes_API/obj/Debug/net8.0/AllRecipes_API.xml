@@ -9,9 +9,14 @@
             Demande le scrapping vers une url
             </summary>
         </member>
-        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetAllSql">
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetAllRecipesSql">
             <summary>
-            Demande le scrapping vers une url
+            Demande toutes les recette de la BDD SQL
+            </summary>
+        </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetOneRecipeSql(System.Int32)">
+            <summary>
+            Demande une recette de la base de données SQL
             </summary>
         </member>
         <member name="T:AllRecipes_API.Migrations.Initial">
