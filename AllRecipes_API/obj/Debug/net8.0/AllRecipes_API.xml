@@ -9,6 +9,11 @@
             Demande le scrapping vers une url
             </summary>
         </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetAllSql">
+            <summary>
+            Demande le scrapping vers une url
+            </summary>
+        </member>
         <member name="T:AllRecipes_API.Migrations.Initial">
             <inheritdoc />
         </member>

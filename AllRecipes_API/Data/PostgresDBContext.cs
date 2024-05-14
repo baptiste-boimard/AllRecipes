@@ -24,6 +24,9 @@ namespace AllRecipes_API.Data
                 .WithOne(i => i.Recipe)
                 .HasForeignKey(i => i.RecipeId);
 
+            // Configuration de la relation Ingredient et le rest
+            
+            
             // Configuration de la relation Ingredient et Quantity
             modelBuilder.Entity<Quantity>()
                 .HasMany(q => q.Ingredients)

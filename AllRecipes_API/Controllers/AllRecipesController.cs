@@ -1,5 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using AllRecipes_API.DTO;
 using AllRecipes_API.Models;
 using AllRecipes_API.Repositories;
 using AllRecipes_API.Services;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AllRecipes_API.Controllers;
 
-public class AllRecipesController : Microsoft.AspNetCore.Mvc.Controller
+public class AllRecipesController : Controller
 {
   private readonly MongoRecipesRepository _mongoRecipesRepository;
   private readonly PostgresRecipeRepository _postgresRecipeRepository;
@@ -82,5 +83,29 @@ public class AllRecipesController : Microsoft.AspNetCore.Mvc.Controller
       Console.WriteLine(e);
             throw;
     }
+  }
+
+  /// <summary>
+  /// Demande le scrapping vers une url
+  /// </summary>
+  [HttpGet]
+  [Route($"/GetAllSql/")]
+  [Produces("application/json")]
+  // [ProducesResponseType(200, Type = typeof(StatusResponseOk))]
+  // [ProducesResponseType(404, Type = typeof(StatusNotFoundError))]
+  public async Task<IActionResult> GetAllSql()
+  {
+    try
+    {
+      var response = _postgresRecipeRepository.GetAll();
+      
+      return Ok(response);
+    }
+    catch (Exception e)
+    {
+      Console.WriteLine(e);
+      throw;
+    }
+    
   }
 }

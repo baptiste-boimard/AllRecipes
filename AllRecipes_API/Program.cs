@@ -1,4 +1,6 @@
 using System.Reflection;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using AllRecipes_API.Data;
 using AllRecipes_API.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +19,13 @@ builder.Services.AddSwaggerGen(options =>
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
   }    
 );
-builder.Services.AddControllers();
+  // permet de prendre en comptre lors de la sérialisation les références circulaires
+builder.Services.AddControllers()
+  .AddJsonOptions(options =>
+  {
+    options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+    options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+  });
 
 // Configuration de MongoDB
 var mongoDbSettings = builder.Configuration.GetSection("MongoDbSettings");

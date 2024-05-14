@@ -1,7 +1,12 @@
 ﻿using System.Text.Json;
 using AllRecipes_API.Data;
+using AllRecipes_API.DTO;
 using AllRecipes_API.Models;
+using AllRecipes_API.Services;
+using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
+using MongoDB.Bson;
+using MongoDB.Bson.IO;
 
 namespace AllRecipes_API.Repositories
 {
@@ -177,6 +182,36 @@ namespace AllRecipes_API.Repositories
             _postgresDbContext.RecipesSql.Add(newRecipe);
             _postgresDbContext.SaveChanges();
             return newRecipe;
+        }
+
+        public List<RecipeSQLDto> GetAll()
+        {
+            var recipes = _postgresDbContext.RecipesSql
+                .Include(r => r.Ingredients)!
+                .ThenInclude(i => i.Quantity)
+                .Include(r => r.Ingredients)!
+                .ThenInclude(i => i.Unity)
+                .Include(r => r.Ingredients)!
+                .ThenInclude(i => i.Name)
+                .ToList();
+
+            var recipeDtos = recipes.Select(r => new RecipeSQLDto
+            {
+                Id = r.Id,
+                Title = r.Title,
+                SubTitle = r.SubTitle,
+                Directions = r.Directions,
+                Ingredients = r.Ingredients!.Select(i => new IngredientDto
+                {
+                    Quantity = i.Quantity!.Description,
+                    Unity = i.Unity!.Description,
+                    Name = i.Name!.Description
+                    
+                    
+                }).ToList()
+            }).ToList();
+            
+            return recipeDtos;
         }
     }
 }
