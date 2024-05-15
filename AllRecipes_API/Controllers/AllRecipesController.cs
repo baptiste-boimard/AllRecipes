@@ -148,4 +148,25 @@ public class AllRecipesController : Controller
         throw;
       }
     }
+    
+    /// <summary>
+    /// Recherche une recette par son nom
+    /// </summary>
+    [HttpGet]
+    [Route($"/GetRecipeByTitleSql/{{title}}")]
+    [Produces("application/json")]
+    public async Task<IActionResult> GetRecipesByTitleSql(string title)
+    {
+      try
+      {
+        var response = _postgresRecipeRepository.GetRecipesByTitle(title);
+        
+        return Ok(response);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e);
+        throw;
+      }
+    }
 }

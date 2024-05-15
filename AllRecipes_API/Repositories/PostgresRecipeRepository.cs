@@ -268,5 +268,32 @@ namespace AllRecipes_API.Repositories
 
             return recipeDtos;
         }
+        
+        public RecipeSQLDto GetRecipesByTitle(string title)
+        {
+            var recipe = _postgresDbContext.RecipesSql
+                .Include(r => r.Ingredients)!
+                .ThenInclude(i => i.Quantity)
+                .Include(r => r.Ingredients)!
+                .ThenInclude(i => i.Unity)
+                .Include(r => r.Ingredients)!
+                .ThenInclude(i => i.Name)
+                .FirstOrDefault(r => r.Title == title );
+
+            var recipeDto = new RecipeSQLDto
+            {
+                Id = recipe!.Id,
+                Title = recipe.Title,
+                SubTitle = recipe.SubTitle,
+                Directions = recipe.Directions,
+                Ingredients = recipe.Ingredients!.Select(i => new IngredientDto
+                {
+                    Quantity = i.Quantity!.Description,
+                    Unity = i.Unity!.Description,
+                    Name = i.Name!.Description,
+                })
+            };
+            return recipeDto;
+        }
     }
 }

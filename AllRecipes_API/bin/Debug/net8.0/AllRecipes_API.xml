@@ -24,6 +24,11 @@
             Demande les recettes qui contiennent cet ingredient
             </summary>
         </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetRecipesByTitleSql(System.String)">
+            <summary>
+            Recherche une recette par son nom
+            </summary>
+        </member>
         <member name="T:AllRecipes_API.Migrations.Initial">
             <inheritdoc />
         </member>
