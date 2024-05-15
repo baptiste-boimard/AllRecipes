@@ -2,11 +2,9 @@
 using AllRecipes_API.Data;
 using AllRecipes_API.DTO;
 using AllRecipes_API.Models;
-using AllRecipes_API.Services;
-using Microsoft.AspNetCore.Http.Json;
 using Microsoft.EntityFrameworkCore;
-using MongoDB.Bson;
-using MongoDB.Bson.IO;
+using System.Linq;
+
 
 namespace AllRecipes_API.Repositories
 {
@@ -240,25 +238,37 @@ namespace AllRecipes_API.Repositories
             };
             return recipeDto;
         }
-        
-        [HttpGet("search")]
-        public async Task<IActionResult> SearchRecipes(string searchTerm)
+
+        public List<RecipeSQLDto> GetRecipesByIngredient(string ingredient)
         {
-            if (string.IsNullOrEmpty(searchTerm))
+            var recipes = _postgresDbContext.RecipesSql
+                .Include(r => r.Ingredients)!
+                .ThenInclude(i => i.Quantity)
+                .Include(r => r.Ingredients)!
+                .ThenInclude(i => i.Unity)
+                .Include(r => r.Ingredients)!
+                .ThenInclude(i => i.Name)
+                .Where(r => r.Ingredients != null &&
+                       r.Ingredients.Any(i => EF.Functions.Like(i.Name!.Description, $"%{ingredient}%")))
+                .ToList();
+
+            var recipeDtos = recipes.Select(r => new RecipeSQLDto
             {
-                return BadRequest("Search term is required.");
-            }
+                Id = r.Id,
+                Title = r.Title,
+                SubTitle = r.SubTitle,
+                Directions = r.Directions,
+                Ingredients = r.Ingredients!.Select(i => new IngredientDto
+                {
+                    Quantity = i.Quantity!.Description,
+                    Unity = i.Unity!.Description,
+                    Name = i.Name!.Description
+                    
+                    
+                }).ToList()
+            }).ToList();
 
-            var recipes = await _postgresDbContext.RecipesSql
-                .Include(r => r.Ingredients)
-                .Where(r => r.Ingredients.Any(i => EF.Functions.Like(i.Name, $"%{searchTerm}%")))
-                .ToListAsync();
-
-            if (!recipes.Any())
-            {
-                return NotFound("No recipes found containing the search term in their ingredients.");
-            }
-
-            return Ok(recipes);
+            return recipeDtos;
+        }
     }
 }

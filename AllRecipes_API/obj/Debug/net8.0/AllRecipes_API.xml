@@ -19,6 +19,11 @@
             Demande une recette de la base de données SQL
             </summary>
         </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetRecipesByIngredientSql(System.String)">
+            <summary>
+            Demande les recettes qui contiennent cet ingredient
+            </summary>
+        </member>
         <member name="T:AllRecipes_API.Migrations.Initial">
             <inheritdoc />
         </member>

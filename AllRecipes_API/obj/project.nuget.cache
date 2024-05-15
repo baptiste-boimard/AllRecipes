@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sRPT0fPxvuIJHpQO6eeHFX5xNF8JGhCETBvcRlWnOSKSu6c85Fa6LTKYsgUt0Vw6pgGNZ+kGblxeRmxJZtmRiA==",
+  "dgSpecHash": "fKFYWAI/jBBytjrE60kxfJknD48lT/pcfteS7PeljW07l6yCFdztJNTRZ8GXL3RuUFC/S9708NERXwQGtiPPtA==",
   "success": true,
   "projectFilePath": "/home/baptiste/Code/Projets/AllRecipes/AllRecipes_API/AllRecipes_API.csproj",
   "expectedPackageFiles": [
@@ -68,7 +68,10 @@
     "/home/baptiste/.nuget/packages/system.text.encodings.web/8.0.0/system.text.encodings.web.8.0.0.nupkg.sha512",
     "/home/baptiste/.nuget/packages/system.text.json/8.0.0/system.text.json.8.0.0.nupkg.sha512",
     "/home/baptiste/.nuget/packages/system.threading.channels/6.0.0/system.threading.channels.6.0.0.nupkg.sha512",
-    "/home/baptiste/.nuget/packages/zstdsharp.port/0.7.3/zstdsharp.port.0.7.3.nupkg.sha512"
+    "/home/baptiste/.nuget/packages/zstdsharp.port/0.7.3/zstdsharp.port.0.7.3.nupkg.sha512",
+    "/home/baptiste/.nuget/packages/microsoft.netcore.app.ref/8.0.5/microsoft.netcore.app.ref.8.0.5.nupkg.sha512",
+    "/home/baptiste/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.5/microsoft.aspnetcore.app.ref.8.0.5.nupkg.sha512",
+    "/home/baptiste/.nuget/packages/microsoft.netcore.app.host.linux-x64/8.0.5/microsoft.netcore.app.host.linux-x64.8.0.5.nupkg.sha512"
   ],
   "logs": []
 }

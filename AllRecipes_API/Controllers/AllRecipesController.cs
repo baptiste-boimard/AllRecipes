@@ -126,5 +126,26 @@ public class AllRecipesController : Controller
         throw;
       }
     
-  }
+    }
+
+    /// <summary>
+    /// Demande les recettes qui contiennent cet ingredient
+    /// </summary>
+    [HttpGet]
+    [Route($"/GetRecipesByIngredientSql/{{ingredient}}")]
+    [Produces("application/json")]
+    public async Task<IActionResult> GetRecipesByIngredientSql(string ingredient)
+    {
+      try
+      {
+        var response = _postgresRecipeRepository.GetRecipesByIngredient(ingredient);
+        
+        return Ok(response);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e);
+        throw;
+      }
+    }
 }
