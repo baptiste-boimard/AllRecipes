@@ -263,8 +263,6 @@ namespace AllRecipes_API.Repositories
                     Quantity = i.Quantity!.Description,
                     Unity = i.Unity!.Description,
                     Name = i.Name!.Description
-                    
-                    
                 }).ToList()
             }).ToList();
 
