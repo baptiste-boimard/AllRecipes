@@ -17,6 +17,7 @@ builder.Services.AddSwaggerGen(options =>
   {
     var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
     options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+    options.EnableAnnotations();
   }    
 );
   // permet de prendre en comptre lors de la sérialisation les références circulaires

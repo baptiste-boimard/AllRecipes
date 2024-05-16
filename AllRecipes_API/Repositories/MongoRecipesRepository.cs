@@ -1,6 +1,7 @@
 using System.Linq.Expressions;
 using System.Text.Json;
 using AllRecipes_API.Models;
+using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace AllRecipes_API.Repositories;
@@ -49,6 +50,74 @@ public class MongoRecipesRepository
       };
     }
     catch (MongoException e)
+    {
+      Console.WriteLine(e);
+      throw;
+    }
+  }
+
+  public async Task<List<RecipeNoSQL>> GellAll()
+  {
+    try
+    {
+      var recipes = await _recipesCollection.Find(new BsonDocument()).ToListAsync();
+      return recipes;
+    }
+    catch (Exception e)
+    {
+      Console.WriteLine(e);
+      throw;
+    }
+  }
+  
+  public Task<RecipeNoSQL> GellOneById(string id)
+  {
+    try
+    {
+      var recipes = _recipesCollection
+        .Find(r => r.Id == id)
+        .FirstOrDefaultAsync();
+      return recipes;
+    }
+    catch (Exception e)
+    {
+      Console.WriteLine(e);
+      throw;
+    }
+  }
+  
+  public Task<List<RecipeNoSQL>> GellRecipesByIngredient(string ingredient)
+  {
+    try
+    {
+      
+      // Création d'un index textuel sur la catégorie Ingredient
+      var indexKeysDefinition = Builders<RecipeNoSQL>.IndexKeys.Text(r => r.Ingredients);
+      var indexModel = new CreateIndexModel<RecipeNoSQL>(indexKeysDefinition);
+      _recipesCollection.Indexes.CreateOne(indexModel);
+      
+      var recipes = _recipesCollection
+        .Find(Builders<RecipeNoSQL>.Filter.Text(ingredient))
+        .ToListAsync();
+      return recipes;
+    }
+    catch (Exception e)
+    {
+      Console.WriteLine(e);
+      throw;
+    }
+  }
+  
+  public Task<RecipeNoSQL> GellRecipeByTitle(string title)
+  {
+    try
+    {
+      var recipes = _recipesCollection
+        .Find(r => r.Title == title)
+        .FirstOrDefaultAsync();
+      return recipes;
+    }
+    catch (Exception e)
     {
       Console.WriteLine(e);
       throw;

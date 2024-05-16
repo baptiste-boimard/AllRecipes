@@ -142,36 +142,23 @@ public class ScrapperService
             // recipe.Ingredients = new List<Ingredient>();
             recipe.Directions = new string("");
 
-              if (ingredientsNodes != null)
-              {
-
-              // recipe.Ingredients = new List<Ingredient>(ingredientsNodes.Count);
+            if (ingredientsNodes != null)
+            {
               foreach (var ingredientsNode in ingredientsNodes)
               {
                 if (ingredientsNode == null) continue;
+                
+                // Imprimer les valeurs des nœuds
                 HtmlNode? quantity = ingredientsNode.SelectSingleNode(".//span[@data-ingredient-quantity='true']");
                 HtmlNode? unity = ingredientsNode.SelectSingleNode(".//span[@data-ingredient-unit='true']");
                 HtmlNode? name = ingredientsNode.SelectSingleNode(".//span[@data-ingredient-name='true']");
                 
-                recipe.Ingredients.Add(new Ingredient
+                recipe.Ingredients!.Add(new Ingredient
                 {
-                  Quantity = new Quantity(description: quantity != null ? quantity.InnerText.Trim() : ""),
-                  Unity = new Unity(description: unity != null ? unity.InnerText.Trim() : ""),
-                  Name  = new Name(description: name != null ? name.InnerText.Trim() : ""),
+                  Quantity = new Quantity(description: quantity !=null ? quantity.InnerText?.Trim() : ""),
+                  Unity = new Unity(description: unity != null ? unity.InnerText?.Trim() : ""),
+                  Name = new Name(description: name != null ? name.InnerText?.Trim() : ""),
                 });
-                // Ingredient ingredient = new Ingredient
-                // {
-                //   // Recipe = new RecipeSql(),
-                //   Quantity = new Quantity(),
-                //   Unity = new Unity(),
-                //   Name = new Name(),
-                // };
-                
-              // recipe.Ingredients.Add(ingredient);
-              
-              // recipe.Ingredients[i].Quantity.Description = ingredientsNodes[i].SelectSingleNode(".//span[@data-ingredient-quantity='true']").InnerText.Trim();
-              // recipe.Ingredients[i].Unity.Description = ingredientsNodes[i].SelectSingleNode(".//span[@data-ingredient-unit='true']").InnerText.Trim();
-              // recipe.Ingredients[i].Name.Description = ingredientsNodes[i].SelectSingleNode(".//span[@data-ingredient-name='true']").InnerText.Trim();
               }
             }
 

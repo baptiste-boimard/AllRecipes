@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "fKFYWAI/jBBytjrE60kxfJknD48lT/pcfteS7PeljW07l6yCFdztJNTRZ8GXL3RuUFC/S9708NERXwQGtiPPtA==",
+  "dgSpecHash": "dGklZuLPG6BA5BzIvQcw0Jw9m6R+Y6CHBxO6FAb1UCjqwWFfBtJk/Dwy9phIxjO0eCQnXRYxqLp8ZuSGjRxH4Q==",
   "success": true,
   "projectFilePath": "/home/baptiste/Code/Projets/AllRecipes/AllRecipes_API/AllRecipes_API.csproj",
   "expectedPackageFiles": [
@@ -34,7 +34,7 @@
     "/home/baptiste/.nuget/packages/microsoft.extensions.options/8.0.0/microsoft.extensions.options.8.0.0.nupkg.sha512",
     "/home/baptiste/.nuget/packages/microsoft.extensions.primitives/8.0.0/microsoft.extensions.primitives.8.0.0.nupkg.sha512",
     "/home/baptiste/.nuget/packages/microsoft.netcore.platforms/5.0.0/microsoft.netcore.platforms.5.0.0.nupkg.sha512",
-    "/home/baptiste/.nuget/packages/microsoft.openapi/1.4.3/microsoft.openapi.1.4.3.nupkg.sha512",
+    "/home/baptiste/.nuget/packages/microsoft.openapi/1.6.14/microsoft.openapi.1.6.14.nupkg.sha512",
     "/home/baptiste/.nuget/packages/microsoft.win32.registry/5.0.0/microsoft.win32.registry.5.0.0.nupkg.sha512",
     "/home/baptiste/.nuget/packages/mongodb.bson/2.25.0/mongodb.bson.2.25.0.nupkg.sha512",
     "/home/baptiste/.nuget/packages/mongodb.driver/2.25.0/mongodb.driver.2.25.0.nupkg.sha512",
@@ -46,8 +46,9 @@
     "/home/baptiste/.nuget/packages/sharpcompress/0.30.1/sharpcompress.0.30.1.nupkg.sha512",
     "/home/baptiste/.nuget/packages/snappier/1.0.0/snappier.1.0.0.nupkg.sha512",
     "/home/baptiste/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
-    "/home/baptiste/.nuget/packages/swashbuckle.aspnetcore.swagger/6.4.0/swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
-    "/home/baptiste/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.4.0/swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "/home/baptiste/.nuget/packages/swashbuckle.aspnetcore.annotations/6.6.1/swashbuckle.aspnetcore.annotations.6.6.1.nupkg.sha512",
+    "/home/baptiste/.nuget/packages/swashbuckle.aspnetcore.swagger/6.6.1/swashbuckle.aspnetcore.swagger.6.6.1.nupkg.sha512",
+    "/home/baptiste/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.6.1/swashbuckle.aspnetcore.swaggergen.6.6.1.nupkg.sha512",
     "/home/baptiste/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.4.0/swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512",
     "/home/baptiste/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
     "/home/baptiste/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",

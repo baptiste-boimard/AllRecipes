@@ -5,6 +5,8 @@ using AllRecipes_API.Models;
 using AllRecipes_API.Repositories;
 using AllRecipes_API.Services;
 using Microsoft.AspNetCore.Mvc;
+using MongoDB.Bson;
+using Swashbuckle.AspNetCore.Annotations;
 
 namespace AllRecipes_API.Controllers;
 
@@ -20,11 +22,12 @@ public class AllRecipesController : Controller
   }
   
   /// <summary>
-  /// Demande le scrapping vers une url
+  /// Demande le scrapping vers une url en choissant sa BDD
   /// </summary>
-  [HttpGet]
+  [HttpPost]
   [Route($"/scrapping/{{url}}/{{sql}}/{{nosql}}")]
   [Produces("application/json")]
+  [SwaggerOperation(Tags = ["AllRecipes Scrapping"])]
     // [ProducesResponseType(200, Type = typeof(StatusResponseOk))]
     // [ProducesResponseType(404, Type = typeof(StatusNotFoundError))]
     public async Task<IActionResult> Scrapping(string url, bool sql, bool nosql)
@@ -91,6 +94,7 @@ public class AllRecipesController : Controller
   [HttpGet]
   [Route($"/GetAllSql/")]
   [Produces("application/json")]
+  [SwaggerOperation(Tags = ["SQL Database"])]
   public async Task<IActionResult> GetAllRecipesSql()
   {
     try
@@ -112,6 +116,7 @@ public class AllRecipesController : Controller
     [HttpGet]
     [Route($"/GetOneRecipeSql/{{id}}")]
     [Produces("application/json")]
+    [SwaggerOperation(Tags = ["SQL Database"])]
     public async Task<IActionResult> GetOneRecipeSql(int id)
     {
       try
@@ -134,6 +139,7 @@ public class AllRecipesController : Controller
     [HttpGet]
     [Route($"/GetRecipesByIngredientSql/{{ingredient}}")]
     [Produces("application/json")]
+    [SwaggerOperation(Tags = ["SQL Database"])]
     public async Task<IActionResult> GetRecipesByIngredientSql(string ingredient)
     {
       try
@@ -155,6 +161,7 @@ public class AllRecipesController : Controller
     [HttpGet]
     [Route($"/GetRecipeByTitleSql/{{title}}")]
     [Produces("application/json")]
+    [SwaggerOperation(Tags = ["SQL Database"])]
     public async Task<IActionResult> GetRecipesByTitleSql(string title)
     {
       try
@@ -169,4 +176,103 @@ public class AllRecipesController : Controller
         throw;
       }
     }
+
+    /// <summary>
+    /// Demande toutes les recette de la BDD NoSQL
+    /// </summary>
+    [HttpGet]
+    [Route($"/GetAllNoSql/")]
+    [Produces("application/json")]
+    [SwaggerOperation(Tags = ["NoSQL Database"])]
+    public async Task<IActionResult> GetAllRecipesNoSql()
+    {
+      try
+      {
+        var response = await _mongoRecipesRepository.GellAll();
+
+        // var responseJson = response.Result.ToJson();
+        
+        return Ok(response);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e);
+        throw;
+      }
+    }
+
+    /// <summary>
+    /// Demande une Recette par son id
+    /// </summary>
+    /// <param name="id"></param>
+    [HttpGet]
+    [Route($"/GetOneNoSql/{{id}}")]
+    [Produces("application/json")]
+    [SwaggerOperation(Tags = ["NoSQL Database"])]
+    public async Task<IActionResult> GetOneRecipeNoSql(string id)
+    {
+      try
+      {
+        var response = await _mongoRecipesRepository.GellOneById(id);
+        
+        return Ok(response);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e);
+        throw;
+      }
+    }
+    
+    /// <summary>
+    /// Demande les Recettes qui contiennent cet ingredient
+    /// </summary>
+    /// <param name="ingredient"></param>
+    [HttpGet]
+    [Route($"/GetRecipesByIngredientNoSql/{{ingredient}}")]
+    [Produces("application/json")]
+    [SwaggerOperation(Tags = ["NoSQL Database"])]
+    public async Task<IActionResult> GetRecipesByIngredientNoSql(string ingredient)
+    {
+      try
+      {
+        var response = await _mongoRecipesRepository.GellRecipesByIngredient(ingredient);
+        
+        return Ok(response);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e);
+        throw;
+      }
+    }
+    /// <summary>
+    /// Demande une Recette par le nom de la recette
+    /// </summary>
+    /// <param name="title"></param>
+    [HttpGet]
+    [Route($"/GetRecipeByTitleNoSql/{{title}}")]
+    [Produces("application/json")]
+    [SwaggerOperation(Tags = ["NoSQL Database"])]
+    public async Task<IActionResult> GetRecipeByTitleNoSql(string title)
+    {
+      try
+      {
+        var response = await _mongoRecipesRepository.GellRecipeByTitle(title);
+        
+        return Ok(response);
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e);
+        throw;
+      }
+    }
 }
+
+// A finir quand demande de title recette qui ne sont pas en BDD sql => erreur, il faut gérer la nullité du result
+// => pareil pour l'id
+
+// En NO SQL pas d'erreur mais un code 204 non documenté
+
+// probleme avec le scrapping vers SQL qui trouve des champs null, bizare

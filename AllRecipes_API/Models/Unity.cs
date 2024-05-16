@@ -12,6 +12,6 @@ public class Unity
     }
 
     public int? Id { get; set; }
-    public List<Ingredient>? Ingredients { get; init; } = new List<Ingredient>();
+    public List<Ingredient> Ingredients { get; init; } = new List<Ingredient>();
     public string? Description { get; set; }
 }

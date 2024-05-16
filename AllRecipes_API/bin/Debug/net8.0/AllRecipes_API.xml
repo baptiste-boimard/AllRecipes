@@ -6,7 +6,7 @@
     <members>
         <member name="M:AllRecipes_API.Controllers.AllRecipesController.Scrapping(System.String,System.Boolean,System.Boolean)">
             <summary>
-            Demande le scrapping vers une url
+            Demande le scrapping vers une url en choissant sa BDD
             </summary>
         </member>
         <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetAllRecipesSql">
@@ -28,6 +28,29 @@
             <summary>
             Recherche une recette par son nom
             </summary>
+        </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetAllRecipesNoSql">
+            <summary>
+            Demande toutes les recette de la BDD NoSQL
+            </summary>
+        </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetOneRecipeNoSql(System.String)">
+            <summary>
+            Demande une Recette par son id
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetRecipesByIngredientNoSql(System.String)">
+            <summary>
+            Demande les Recettes qui contiennent cet ingredient
+            </summary>
+            <param name="ingredient"></param>
+        </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetRecipeByTitleNoSql(System.String)">
+            <summary>
+            Demande une Recette par le nom de la recette
+            </summary>
+            <param name="title"></param>
         </member>
         <member name="T:AllRecipes_API.Migrations.Initial">
             <inheritdoc />
