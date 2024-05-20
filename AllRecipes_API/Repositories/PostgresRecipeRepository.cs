@@ -184,7 +184,7 @@ namespace AllRecipes_API.Repositories
 
         public List<RecipeSQLDto> GetAll()
         {
-            
+           
             var recipes = _postgresDbContext.RecipesSql
                 .Include(r => r.Ingredients)!
                 .ThenInclude(i => i.Quantity)
@@ -193,6 +193,23 @@ namespace AllRecipes_API.Repositories
                 .Include(r => r.Ingredients)!
                 .ThenInclude(i => i.Name)
                 .ToList();
+
+            if (recipes == null)
+            {
+                throw new CustomError
+                {
+                    Message = "La Bdd ne contient aucunes informations"
+                };
+            }
+            
+            // var recipes = _postgresDbContext.RecipesSql
+            //     .Include(r => r.Ingredients)!
+            //     .ThenInclude(i => i.Quantity)
+            //     .Include(r => r.Ingredients)!
+            //     .ThenInclude(i => i.Unity)
+            //     .Include(r => r.Ingredients)!
+            //     .ThenInclude(i => i.Name)
+            //     .ToList();
 
             var recipeDtos = recipes.Select(r => new RecipeSQLDto
             {
@@ -226,6 +243,14 @@ namespace AllRecipes_API.Repositories
                 .ThenInclude(i => i.Name)
                 .FirstOrDefault(r => r.Id == id);
 
+            if (recipe == null)
+            {
+                throw new CustomError
+                {
+                    Message = "Cette id de recette n'existe pas en BDD"
+                };
+            }
+
             var recipeDto = new RecipeSQLDto
             {
                 Id = recipe.Id,
@@ -255,6 +280,14 @@ namespace AllRecipes_API.Repositories
                        r.Ingredients.Any(i => EF.Functions.Like(i.Name!.Description, $"%{ingredient}%")))
                 .ToList();
 
+            if (recipes == null)
+            {
+                throw new CustomError
+                {
+                    Message = "Aucune recette en Bdd ne contient cet ingredient"
+                };
+            }
+
             var recipeDtos = recipes.Select(r => new RecipeSQLDto
             {
                 Id = r.Id,
@@ -282,6 +315,14 @@ namespace AllRecipes_API.Repositories
                 .Include(r => r.Ingredients)!
                 .ThenInclude(i => i.Name)
                 .FirstOrDefault(r => r.Title == title );
+
+            if (recipe == null)
+            {
+                throw new CustomError
+                {
+                    Message = "Aucune recette ne porte ce nom"
+                };
+            }
 
             var recipeDto = new RecipeSQLDto
             {
