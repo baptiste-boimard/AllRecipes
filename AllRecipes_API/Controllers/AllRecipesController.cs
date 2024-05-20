@@ -125,12 +125,11 @@ public class AllRecipesController : Controller
       
         return Ok(response);
       }
-      catch (Exception e)
+      catch (CustomError e)
       {
         Console.WriteLine(e);
-        throw;
+        return NotFound(e.Message);
       }
-    
     }
 
     /// <summary>
@@ -148,10 +147,10 @@ public class AllRecipesController : Controller
         
         return Ok(response);
       }
-      catch (Exception e)
+      catch (CustomError e)
       {
         Console.WriteLine(e);
-        throw;
+        return NotFound(e.Message);
       }
     }
     
@@ -170,10 +169,10 @@ public class AllRecipesController : Controller
         
         return Ok(response);
       }
-      catch (Exception e)
+      catch (CustomError e)
       {
         Console.WriteLine(e);
-        throw;
+        return NotFound(e.Message);
       }
     }
 
@@ -270,7 +269,3 @@ public class AllRecipesController : Controller
     }
 }
 
-// A finir quand demande de title recette qui ne sont pas en BDD sql => erreur, il faut gérer la nullité du result
-// => pareil pour l'id
-
-// En NO SQL pas d'erreur mais un code 204 non documenté
