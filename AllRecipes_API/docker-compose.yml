@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  myapp:
+    build: .
+    container_name: myapp-container
+    image: myapp:latest
+    ports:
+      - "8080:80" # Modifier les ports selon les besoins
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
