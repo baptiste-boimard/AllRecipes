@@ -3,8 +3,8 @@ services:
     image: allrecipes_api
     build:
       context: .
-      dockerfile: AllRecipes_API/Dockerfile
+      dockerfile: Dockerfile
       ports:
-        - "3001:3001" # Modifier les ports selon les besoins
+        - "5243:5243" # Modifier les ports selon les besoins
       environment:
         - ASPNETCORE_ENVIRONMENT=Production
