@@ -184,6 +184,7 @@ namespace AllRecipes_API.Repositories
 
         public List<RecipeSQLDto> GetAll()
         {
+            
             var recipes = _postgresDbContext.RecipesSql
                 .Include(r => r.Ingredients)!
                 .ThenInclude(i => i.Quantity)
@@ -208,6 +209,8 @@ namespace AllRecipes_API.Repositories
                     
                 }).ToList()
             }).ToList();
+            
+            
             
             return recipeDtos;
         }

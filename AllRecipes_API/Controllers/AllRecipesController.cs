@@ -274,5 +274,3 @@ public class AllRecipesController : Controller
 // => pareil pour l'id
 
 // En NO SQL pas d'erreur mais un code 204 non documenté
-
-// probleme avec le scrapping vers SQL qui trouve des champs null, bizare
