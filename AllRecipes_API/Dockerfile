@@ -7,11 +7,12 @@ WORKDIR /app
 
 # Copiez le reste des fichiers et construisez l'application
 COPY . ./
+RUN ls -al
 RUN dotnet restore
 RUN dotnet publish -c Release -o out
 
 # Utilisez l'image de base de .NET Core Runtime pour exécuter l'application
-FROM mcr.microsoft.com/dotnet/aspnet:8.0
+FROM mcr.microsoft.com/dotnet/runtime:8.0
 WORKDIR /app
 COPY --from=build-env /app/out .
 
