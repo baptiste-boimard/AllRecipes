@@ -1,10 +1,8 @@
 using System.Reflection;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using AllRecipes_API.Data;
 using AllRecipes_API.Repositories;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);

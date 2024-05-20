@@ -1,0 +1,6 @@
+﻿services:
+  allrecipes_api:
+    image: allrecipes_api
+    build:
+      context: .
+      dockerfile: AllRecipes_API/Dockerfile
