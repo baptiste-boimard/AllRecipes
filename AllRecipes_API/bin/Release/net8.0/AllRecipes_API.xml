@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AllRecipes_API</name>
+    </assembly>
+    <members>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.Scrapping(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Demande le scrapping vers une url en choissant sa BDD
+            </summary>
+        </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetAllRecipesSql">
+            <summary>
+            Demande toutes les recette de la BDD SQL
+            </summary>
+        </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetOneRecipeSql(System.Int32)">
+            <summary>
+            Demande une recette de la base de données SQL
+            </summary>
+        </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetRecipesByIngredientSql(System.String)">
+            <summary>
+            Demande les recettes qui contiennent cet ingredient
+            </summary>
+        </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetRecipesByTitleSql(System.String)">
+            <summary>
+            Recherche une recette par son nom
+            </summary>
+        </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetAllRecipesNoSql">
+            <summary>
+            Demande toutes les recette de la BDD NoSQL
+            </summary>
+        </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetOneRecipeNoSql(System.String)">
+            <summary>
+            Demande une Recette par son id
+            </summary>
+            <param name="id"></param>
+        </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetRecipesByIngredientNoSql(System.String)">
+            <summary>
+            Demande les Recettes qui contiennent cet ingredient
+            </summary>
+            <param name="ingredient"></param>
+        </member>
+        <member name="M:AllRecipes_API.Controllers.AllRecipesController.GetRecipeByTitleNoSql(System.String)">
+            <summary>
+            Demande une Recette par le nom de la recette
+            </summary>
+            <param name="title"></param>
+        </member>
+        <member name="T:AllRecipes_API.Migrations.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:AllRecipes_API.Migrations.AddTables">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.AddTables.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.AddTables.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.AddTables.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:AllRecipes_API.Migrations.AddManyRelations">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.AddManyRelations.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.AddManyRelations.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.AddManyRelations.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:AllRecipes_API.Migrations.ajoutunitydescriptionunique">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.ajoutunitydescriptionunique.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.ajoutunitydescriptionunique.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:AllRecipes_API.Migrations.ajoutunitydescriptionunique.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

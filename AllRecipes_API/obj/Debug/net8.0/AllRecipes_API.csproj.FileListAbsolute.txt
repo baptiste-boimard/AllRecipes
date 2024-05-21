@@ -292,3 +292,4 @@ C:/Development/AllRecipes/AllRecipes_API/bin/Debug/net8.0/zh-Hant/Microsoft.Code
 /home/baptiste/Code/Projets/AllRecipes/AllRecipes_API/obj/Debug/net8.0/AllRecipes_API.genruntimeconfig.cache
 /home/baptiste/Code/Projets/AllRecipes/AllRecipes_API/obj/Debug/net8.0/ref/AllRecipes_API.dll
 /home/baptiste/Code/Projets/AllRecipes/AllRecipes_API/bin/Debug/net8.0/Swashbuckle.AspNetCore.Annotations.dll
+/home/baptiste/Code/Projets/AllRecipes/AllRecipes_API/bin/Debug/net8.0/DotNet.Docker.Core.dll

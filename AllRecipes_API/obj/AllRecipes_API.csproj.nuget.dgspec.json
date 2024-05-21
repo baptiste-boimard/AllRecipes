@@ -32,12 +32,21 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "DotNet.Docker.Core": {
+              "target": "Package",
+              "version": "[1.0.0-preview1, )"
+            },
             "HtmlAgilityPack": {
               "target": "Package",
               "version": "[1.11.60, )"
