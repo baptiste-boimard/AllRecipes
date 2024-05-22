@@ -14,8 +14,8 @@ WORKDIR /App
 COPY --from=build /App/out .
 
 # Exposer le port 80 (port par défaut pour les applications ASP.NET Core dans les conteneurs)
-EXPOSE 80
+EXPOSE 3001
 # Exposer le port 8080 pour redirection
-EXPOSE 8080
+#EXPOSE 8080
 
 ENTRYPOINT ["dotnet", "AllRecipes_API.dll"]
