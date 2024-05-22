@@ -3,7 +3,6 @@
     <PropertyGroup>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <TargetFramework>net8.0</TargetFramework>
-        <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
         <NoWarn>$(NoWarn);1591</NoWarn>
@@ -12,7 +11,6 @@
     <ItemGroup>
         <PackageReference Include="DotNet.Docker.Core" Version="1.0.0-preview1" />
         <PackageReference Include="HtmlAgilityPack" Version="1.11.60" />
-        <PackageReference Include="Microsoft.AspNetCore.App" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.3"/>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">
